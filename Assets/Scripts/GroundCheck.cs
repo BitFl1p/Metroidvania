@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        GetComponent<PlayerMovement>().isGrounded = true;
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        
+        GetComponent<PlayerMovement>().isGrounded = false;
     }
 }

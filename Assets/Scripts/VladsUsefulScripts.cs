@@ -49,6 +49,11 @@ namespace VladsUsefulScripts
         {
             if (vector.x > drag) vector.x -= drag;
             else if (vector.x < -drag) vector.x += drag;
+            if (vector.x < drag * 1.2 && vector.x > -drag * 1.2)
+            {
+                vector.x = 0;
+                return vector;
+            }
             return vector;
         }
     }
