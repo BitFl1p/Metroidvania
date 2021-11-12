@@ -39,7 +39,6 @@ public class PlayerAttacks : MonoBehaviour
             if(attack == 0) attack = 1;
             if(combo) attack = 2;
         }
-        dmg.damage = attack;
         
     }
 }
