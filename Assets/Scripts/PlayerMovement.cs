@@ -35,9 +35,11 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(rb.velocity.x / (speed * maxSpeedMult)) < 0.1) anim.SetFloat("X", 0);
         else if (Mathf.Abs(rb.velocity.x / (speed * maxSpeedMult)) < 0.25) anim.SetFloat("X", 0.5f);
         else anim.SetFloat("X", 1); 
-        if (rb.velocity.normalized.y < -0.5) anim.SetFloat("Y", 0);
-        else if (rb.velocity.normalized.y < 0.5) anim.SetFloat("Y", 0.5f);
+        if (rb.velocity.y < -10) anim.SetFloat("Y", -1);
+        else if (rb.velocity.y < 10) 
+            anim.SetFloat("Y", 0f);
         else anim.SetFloat("X", 1);
+        Debug.Log(rb.velocity.y);
         anim.SetBool("Grounded", isGrounded); 
         //anim.SetFloat("X", Mathf.Abs(rb.velocity.x / (speed * maxSpeedMult))); 
         anim.SetFloat("Y", rb.velocity.normalized.y);

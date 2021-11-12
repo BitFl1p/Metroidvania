@@ -21,6 +21,6 @@ public class Health : MonoBehaviour
         var instance = Instantiate(indicator);
         instance.SetText(damage.ToString());
         instance.transform.position = transform.position;
-        rb.velocity += (Vector2)(transform.position - dealer.transform.position).normalized * knockback;
+        rb.velocity += (new Vector2(transform.position.x - dealer.transform.position.x, 0).normalized + Vector2.up*3) * knockback;
     }
 }
