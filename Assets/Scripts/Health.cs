@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] float maxHealth, health;
-    Rigidbody2D rb;
-    public DamageIndicator indicator; 
+    [SerializeField] protected float maxHealth, health;
+    protected Rigidbody2D rb;
+    public DamageIndicator indicator;
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         health = maxHealth;
         rb = GetComponent<Rigidbody2D>();
     }
-    private void Update()
+    protected virtual void Update()
     {
         if (health <= 0) Destroy(gameObject);
     }
 
-    public void Damage(int damage, Collider2D dealer, float knockback)
+    public virtual void Damage(int damage, Collider2D dealer, float knockback)
     {
         health -= damage;
         var instance = Instantiate(indicator);

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAttacks : MonoBehaviour
 {
+    PlayerMovement player;
     Animator anim;
     DamageCollider dmg;
     int attack;
@@ -18,6 +19,8 @@ public class PlayerAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        anim.SetFloat("X", Input.GetAxisRaw("Vertical") == 0 ? 1 : 0);
+        anim.SetFloat("Y", Input.GetAxisRaw("Vertical"));
         if (combo)
         {
             if(attack == 1) attack = 0;
