@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
         
 
-        if (rb.velocity.x != 0 && registerMove)
+        if ((rb.velocity.x >= drag / 10 || rb.velocity.x <= -drag / 10) && registerMove)
         {
             if (rb.velocity.x < 0) lastMove = -1;
             else if (rb.velocity.x > 0) lastMove = 1;
@@ -67,8 +67,7 @@ public class PlayerMovement : MonoBehaviour
         else if (Mathf.Abs(rb.velocity.x) < speed * maxSpeedMult + 1) anim.SetFloat("X", 0.5f);
         else anim.SetFloat("X", 1);
         if (rb.velocity.y < -10) anim.SetFloat("Y", -1);
-        else if (rb.velocity.y < 10)
-            anim.SetFloat("Y", 0f);
+        else if (rb.velocity.y < 10) anim.SetFloat("Y", 0f);
         else anim.SetFloat("Y", 1);
         anim.SetBool("Grounded", isGrounded);
         //anim.SetFloat("X", Mathf.Abs(rb.velocity.x / (speed * maxSpeedMult))); 
