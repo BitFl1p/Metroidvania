@@ -6,7 +6,7 @@ public class DamageCollider : MonoBehaviour
     
     public Rigidbody2D me;
     public int damage, knockback;
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         OnTriggerEnter2D(collision.collider);
     }

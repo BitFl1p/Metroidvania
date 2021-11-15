@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerDamageCollider : DamageCollider
 {
+    public int damageModifier;
+    public PlayerAttacks attacker;
     List<GameObject> attacked = new List<GameObject> { };
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,17 +17,23 @@ public class PlayerDamageCollider : DamageCollider
         
         if (collision.gameObject.TryGetComponent(out Health health))
         {
-            health.Damage(damage, GetComponent<Collider2D>(), knockback);
+            health.Damage(damage, Input.GetAxisRaw("Vertical") == 0 ? GetComponent<Collider2D>() : collision, knockback);
             if (me.TryGetComponent(out PlayerMovement player))
             {
                 player.airDashed = false;
                 player.registerMove = false;
-                me.velocity = new Vector2(Input.GetAxisRaw("Vertical") == 0 ? -me.GetComponent<PlayerMovement>().lastMove : 0, -Input.GetAxisRaw("Vertical")*2.5f) * knockback;
+                me.velocity = new Vector2(Input.GetAxisRaw("Vertical") == 0 ? -me.GetComponent<PlayerMovement>().lastMove / 2 : 0, -Input.GetAxisRaw("Vertical") * 1.7f) * knockback;
             }
         }
+    }
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {
+        OnTriggerEnter2D(collision.collider);
     }
     private void Update()
     {
         if (!GetComponent<Collider2D>().enabled) attacked.Clear();
+        damage = attacker.baseDamage + damageModifier;
+        knockback = attacker.baseKnockback;
     }
 }

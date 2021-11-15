@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     Animator anim;
     public float speed, maxSpeedMult, jumpPow, drag, lastMove;
     float count;
-    public bool isGrounded, registerMove, airDashed;
+    public bool isGrounded, registerMove, airDashed, onWall;
     bool pressed, dashed;
     private void Start()
     {
@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        if (!isGrounded && airDashed) return;
+        if (!isGrounded && airDashed || !registerMove) return;
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (count <= 0)
@@ -38,31 +38,55 @@ public class PlayerMovement : MonoBehaviour
     }
     void Movement()
     {
-        if (isGrounded && Input.GetKey(KeyCode.Space) && !pressed)
+        Debug.Log(lastMove);
+        if (onWall)
         {
-            pressed = true;
-            rb.velocity = new Vector2(rb.velocity.x, jumpPow);
+            if (Input.GetAxisRaw("Horizontal") == -lastMove)
+            {
+                registerMove = false;
+                rb.velocity = new Vector2(-lastMove, -1);
+            }
+            else
+            {
+                onWall = false;
+            }
         }
-        if (!Input.GetKey(KeyCode.Space)) pressed = false;
+        if (Input.GetKey(KeyCode.Space) && !pressed)
+        {
+            if (isGrounded)
+            {
+                pressed = true;
+                rb.velocity = new Vector2(rb.velocity.x, jumpPow);
+            }
+            else if (onWall)
+            {
+                onWall = false;
+                pressed = true;
+                rb.velocity = new Vector2(lastMove*0.8f, jumpPow / maxSpeedMult) * maxSpeedMult;
+            }
+        }
 
-        
+        if (!Input.GetKey(KeyCode.Space)) pressed = false;
 
         if ((rb.velocity.x >= drag / 10 || rb.velocity.x <= -drag / 10) && registerMove)
         {
             if (rb.velocity.x < 0) lastMove = -1;
             else if (rb.velocity.x > 0) lastMove = 1;
         }
+
         if (!registerMove)
         {
             rb.velocity = Clampers.Drag(rb.velocity, drag);
-            if (rb.velocity.x < drag && rb.velocity.x > -drag) registerMove = true;
+            if (rb.velocity.x < drag && rb.velocity.x > -drag && !onWall) registerMove = true;
         }
+
         if (lastMove < 0) transform.eulerAngles = new Vector2(0, 180);
         else transform.eulerAngles = new Vector2(0, 0);
         if (registerMove && count <= 0.4f) rb.velocity = Clampers.VelCalc(Clampers.Drag(rb.velocity, drag), speed, maxSpeedMult);
     }
     void Animation()
     {
+        if (!registerMove) return;
         if (Mathf.Abs(rb.velocity.x / (speed * maxSpeedMult)) < 0.1) anim.SetFloat("X", 0);
         else if (Mathf.Abs(rb.velocity.x) < speed * maxSpeedMult + 1) anim.SetFloat("X", 0.5f);
         else anim.SetFloat("X", 1);

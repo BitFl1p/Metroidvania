@@ -615,7 +615,7 @@ ParticleSystem:
     startRotation:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 6.283185
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -668,7 +668,7 @@ ParticleSystem:
     randomizeRotationDirection: 0
     maxNumParticles: 1000
     size3D: 0
-    rotation3D: 0
+    rotation3D: 1
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
@@ -4804,6 +4804,78 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &1313356088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1313356089}
+  - component: {fileID: 1313356090}
+  m_Layer: 0
+  m_Name: Point Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1313356089
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313356088}
+  m_LocalRotation: {x: -0, y: -0, z: 0.042000238, w: 0.9991176}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1516768116522497921}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1313356090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313356088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 1
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0.65
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 23.87
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &1516768115727268533
 GameObject:
   m_ObjectHideFlags: 0
@@ -4917,6 +4989,8 @@ GameObject:
   - component: {fileID: 1516768116038328925}
   - component: {fileID: 1516768116038328926}
   - component: {fileID: 6661237591049000025}
+  - component: {fileID: 1849272613}
+  - component: {fileID: 1849272612}
   m_Layer: 7
   m_Name: Hand1
   m_TagString: Untagged
@@ -5030,10 +5104,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Time: 0.03
+  m_Time: 0.1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.35
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -5045,59 +5119,23 @@ TrailRenderer:
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.3409882
-        value: 1
-        inSlope: -0
-        outSlope: -0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.40320194
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.34402582
-        value: 0.4584074
-        inSlope: -0.058327775
-        outSlope: -0.058327775
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.16882049
-      - serializedVersion: 3
-        time: 0.7658539
-        value: 0.4759674
-        inSlope: 0.053700183
-        outSlope: 0.053700183
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.7484194
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.7702365
-        value: 0.24039048
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+        outWeight: 0.2631579
       - serializedVersion: 3
         time: 1
-        value: 0.23558396
-        inSlope: 0
-        outSlope: 0
+        value: 0
+        inSlope: -2.630769
+        outSlope: -2.630769
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.07675439
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 1}
-      key1: {r: 0, g: 0, b: 0, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -5123,8 +5161,8 @@ TrailRenderer:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 6
-    numCapVertices: 0
+    numCornerVertices: 1
+    numCapVertices: 1
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
@@ -5132,6 +5170,37 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!58 &1849272613
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516768116038328924}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1875
+--- !u!114 &1849272612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516768116038328924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed33dc935559b2e47b858e9a20668ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  me: {fileID: 1516768116522497923}
+  damage: 1
+  knockback: 5
 --- !u!1 &1516768116522497935
 GameObject:
   m_ObjectHideFlags: 0
@@ -5149,6 +5218,7 @@ GameObject:
   - component: {fileID: 1516768116522497925}
   - component: {fileID: 1516768116522497927}
   - component: {fileID: 236579585}
+  - component: {fileID: 236579587}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -5170,6 +5240,7 @@ Transform:
   - {fileID: 1516768115727268534}
   - {fileID: 851672482}
   - {fileID: 5493917424993436102}
+  - {fileID: 1313356089}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5185,11 +5256,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae22ba5f7a8bdca48aedb1aabb823a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 1
   maxSpeedMult: 7
   jumpPow: 20
   drag: 0.3
+  lastMove: 0
   isGrounded: 0
+  registerMove: 0
+  airDashed: 0
 --- !u!114 &1516768116522497926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5357,7 +5431,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d62e6b7b7102b849a1094abecc10086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attacks: {fileID: 0}
+  attacks: {fileID: 741260858}
+--- !u!114 &236579587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516768116522497935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d11784d110b79246970c1224633de52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  health: 0
+  indicator: {fileID: 5782162399985609554, guid: 5900a9f373ee1024f969b694ccb5c7de, type: 3}
 --- !u!1 &1516768117169597348
 GameObject:
   m_ObjectHideFlags: 0
@@ -5369,6 +5458,8 @@ GameObject:
   - component: {fileID: 1516768117169597349}
   - component: {fileID: 1516768117169597350}
   - component: {fileID: 8806316153568608043}
+  - component: {fileID: 1095932856}
+  - component: {fileID: 1095932855}
   m_Layer: 7
   m_Name: Hand2
   m_TagString: Untagged
@@ -5481,11 +5572,11 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -4
-  m_Time: 0.03
+  m_SortingOrder: -3
+  m_Time: 0.1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.3
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -5497,59 +5588,23 @@ TrailRenderer:
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.3409882
-        value: 1
-        inSlope: -0
-        outSlope: -0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.40320194
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.34402582
-        value: 0.4584074
-        inSlope: -0.058327775
-        outSlope: -0.058327775
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.16882049
-      - serializedVersion: 3
-        time: 0.7658539
-        value: 0.4759674
-        inSlope: 0.053700183
-        outSlope: 0.053700183
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.7484194
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.7702365
-        value: 0.24039048
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+        outWeight: 0.2631579
       - serializedVersion: 3
         time: 1
-        value: 0.23558396
-        inSlope: 0
-        outSlope: 0
+        value: 0
+        inSlope: -2.630769
+        outSlope: -2.630769
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.07675439
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 1}
-      key1: {r: 0, g: 0, b: 0, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -5575,8 +5630,8 @@ TrailRenderer:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    numCornerVertices: 6
-    numCapVertices: 0
+    numCornerVertices: 1
+    numCapVertices: 1
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
@@ -5584,6 +5639,37 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!58 &1095932856
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516768117169597348}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.03750001, y: 0.037499994}
+  serializedVersion: 2
+  m_Radius: 0.1875
+--- !u!114 &1095932855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516768117169597348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed33dc935559b2e47b858e9a20668ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  me: {fileID: 1516768116522497923}
+  damage: 2
+  knockback: 5
 --- !u!1 &1759200278636480792
 GameObject:
   m_ObjectHideFlags: 0
@@ -5594,7 +5680,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5493917424993436102}
   - component: {fileID: 7558205065776111377}
-  - component: {fileID: 3641912265796954505}
+  - component: {fileID: 741260858}
+  - component: {fileID: 741260859}
   m_Layer: 7
   m_Name: Hands
   m_TagString: Untagged
@@ -5637,19 +5724,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!70 &3641912265796954505
-CapsuleCollider2D:
+--- !u!114 &741260858
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759200278636480792}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 1.0470968, y: 0.023073193}
-  m_Size: {x: 1.7542102, y: 1.0927821}
-  m_Direction: 1
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96bbc78b40c00e479aa5d2ff46e066c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combo: 0
+--- !u!114 &741260859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759200278636480792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d62e6b7b7102b849a1094abecc10086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacks: {fileID: 741260858}
