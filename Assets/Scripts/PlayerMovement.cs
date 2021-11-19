@@ -86,6 +86,8 @@ public class PlayerMovement : MonoBehaviour
     }
     void Animation()
     {
+        anim.SetBool("OnWall", onWall);
+        anim.SetBool("Grounded", isGrounded);
         if (!registerMove) return;
         if (Mathf.Abs(rb.velocity.x / (speed * maxSpeedMult)) < 0.1) anim.SetFloat("X", 0);
         else if (Mathf.Abs(rb.velocity.x) < speed * maxSpeedMult + 1) anim.SetFloat("X", 0.5f);
@@ -93,7 +95,6 @@ public class PlayerMovement : MonoBehaviour
         if (rb.velocity.y < -10) anim.SetFloat("Y", -1);
         else if (rb.velocity.y < 10) anim.SetFloat("Y", 0f);
         else anim.SetFloat("Y", 1);
-        anim.SetBool("Grounded", isGrounded);
         //anim.SetFloat("X", Mathf.Abs(rb.velocity.x / (speed * maxSpeedMult))); 
         anim.SetFloat("Y", rb.velocity.normalized.y);
     }

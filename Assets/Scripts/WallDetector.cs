@@ -5,14 +5,34 @@ using UnityEngine;
 public class WallDetector : MonoBehaviour
 {
     public int side;
+    public float delay;
+    float delayTimer;
+    bool pressed;
     private void Update()
     {
         transform.localPosition = Vector3.zero;
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Ground" && GetComponentInParent<PlayerMovement>().onWall == false)
+        if (collision.gameObject.tag == "Ground" && GetComponentInParent<PlayerMovement>().isGrounded) 
         {
+            GetComponentInParent<PlayerMovement>().registerMove = true;
+            GetComponentInParent<PlayerMovement>().onWall = false;
+            return;
+        }
+        if(collision.gameObject.tag == "Ground" && !GetComponentInParent<PlayerMovement>().onWall && !GetComponentInParent<PlayerMovement>().isGrounded)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                pressed = true;
+            }
+            if (pressed)
+            {
+                delayTimer -= Time.deltaTime;
+                if (delayTimer < 0) pressed = false;
+                return;
+            }
+            else delayTimer = delay;
             transform.parent.position += GetComponentInParent<PlayerMovement>().lastMove < 0 ? (Vector3)Vector2.left * 0.4f : (Vector3)Vector2.right * 0.4f;
             GetComponentInParent<PlayerMovement>().onWall = true;
             GetComponentInParent<PlayerMovement>().airDashed = false;
