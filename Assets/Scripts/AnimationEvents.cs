@@ -35,6 +35,15 @@ public class AnimationEvents : MonoBehaviour
     {
         attacks.combo = true;
     }
+    public void RegisterMoveTrue()
+    {
+        GetComponentInParent<PlayerMovement>().registerMove = true;
+    }
+    public void RegisterMoveFalse()
+    {
+        GetComponentInParent<PlayerMovement>().registerMove = false;
+    }
+
     public void ShootProjectile()
     {
         PlayerMovement schmove = GetComponentInParent<PlayerMovement>();

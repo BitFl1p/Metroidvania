@@ -9,7 +9,7 @@ using UnityEngine.Rendering.Universal;
 public class PlayerHealth : Health
 {
     Volume vol;
-    public Slider healthSlider;
+    public HealthAndManaManager healthSlider;
     public override void Damage(int damage, Collider2D dealer, float knockback)
     {
         health -= damage;
@@ -27,8 +27,8 @@ public class PlayerHealth : Health
     protected override void Update()
     {
         base.Update();
-        healthSlider.value = health;
-        healthSlider.maxValue = maxHealth;
+        healthSlider.health = health;
+        healthSlider.maxHealth = maxHealth;
         vol.profile.TryGet(out Vignette vig);
         vol.profile.TryGet(out ChromaticAberration ab);
         vol.profile.TryGet(out FilmGrain grain);

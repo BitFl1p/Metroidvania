@@ -10,9 +10,9 @@ public class PlayerAttacks : MonoBehaviour
     DamageCollider dmg;
     public int attack;
     public bool combo;
-    public float mana, maxMana;
+    public int mana, maxMana;
     public int baseDamage, baseKnockback;
-    public Slider manaSlider;
+    public HealthAndManaManager manaSlider;
     float timer;
     private void Start()
     {
@@ -24,8 +24,8 @@ public class PlayerAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        manaSlider.maxValue = maxMana;
-        manaSlider.value = mana;
+        manaSlider.maxMana = maxMana;
+        manaSlider.mana = mana;
         anim.SetFloat("X", Input.GetAxisRaw("Vertical") == 0 ? 1 : 0);
         anim.SetFloat("Y", Input.GetAxisRaw("Vertical"));
         if (combo)
@@ -48,7 +48,7 @@ public class PlayerAttacks : MonoBehaviour
             if(attack == 0) attack = 1;
             if(combo) attack = 2;
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && attack != 3)
         {
             if (mana > 0)
             {

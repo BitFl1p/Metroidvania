@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] protected float maxHealth, health;
+    [SerializeField] protected int maxHealth, health;
     protected Rigidbody2D rb;
     public DamageIndicator indicator;
     // Start is called before the first frame update

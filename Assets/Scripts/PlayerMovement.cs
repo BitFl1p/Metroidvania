@@ -7,9 +7,23 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator anim;
-    public float speed, maxSpeedMult, jumpPow, drag, lastMove;
+    public float speed, maxSpeedMult, jumpPow, drag, lastMove = 1;
     float count;
-    public bool isGrounded, registerMove, airDashed, onWall;
+    public bool isGrounded, registerMove, airDashed, dashing;
+    bool _onWall;
+    public bool onWall
+    {
+        get { return _onWall; }
+        set
+        {
+            if (_onWall == value) return;
+            _onWall = value;
+            if(_onWall == false)
+            {
+                transform.position = new Vector2(transform.position.x + lastMove / 2, transform.position.y);
+            }
+        }
+    }
     bool pressed, dashed;
     private void Start()
     {
@@ -25,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (!isGrounded) airDashed = true;
                 dashed = true;
+                dashing = true;
+                registerMove = false;
                 count = 0.7f;
             }
         }
@@ -38,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Movement()
     {
-        Debug.Log(lastMove);
+        //Debug.Log(lastMove);
         if (onWall)
         {
             if (Input.GetAxisRaw("Horizontal") == -lastMove)
@@ -48,6 +64,11 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+                onWall = false;
+            }
+            if (isGrounded)
+            {
+                //transform.position = new Vector2(transform.position.x + lastMove/2, transform.position.y); 
                 onWall = false;
             }
         }
@@ -68,21 +89,25 @@ public class PlayerMovement : MonoBehaviour
 
         if (!Input.GetKey(KeyCode.Space)) pressed = false;
 
-        if ((rb.velocity.x >= drag / 10 || rb.velocity.x <= -drag / 10) && registerMove)
+        if (Input.GetAxisRaw("Horizontal") != 0 && registerMove)
         {
-            if (rb.velocity.x < 0) lastMove = -1;
-            else if (rb.velocity.x > 0) lastMove = 1;
+            if (Input.GetAxisRaw("Horizontal") < 0) lastMove = -1;
+            else if (Input.GetAxisRaw("Horizontal") > 0) lastMove = 1;
         }
 
-        if (!registerMove)
+        if (dashing)
         {
             rb.velocity = Clampers.Drag(rb.velocity, drag);
-            if (rb.velocity.x < drag && rb.velocity.x > -drag && !onWall) registerMove = true;
+            if (dashing && count <= 0.4f) 
+            { 
+                dashing = false;
+                registerMove = true;
+            }
         }
 
         if (lastMove < 0) transform.eulerAngles = new Vector2(0, 180);
         else transform.eulerAngles = new Vector2(0, 0);
-        if (registerMove && count <= 0.4f) rb.velocity = Clampers.VelCalc(Clampers.Drag(rb.velocity, drag), speed, maxSpeedMult);
+        if (!dashing && count <= 0.4f) rb.velocity = Clampers.VelCalc(Clampers.Drag(rb.velocity, drag), speed, maxSpeedMult);
     }
     void Animation()
     {

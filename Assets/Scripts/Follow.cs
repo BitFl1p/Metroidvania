@@ -4,12 +4,12 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class Follow : MonoBehaviour
 {
-    public Transform target;
+    public GameObject target;
     public Vector2 offset;
 
     private void Update()
     {
-        if (!target) Destroy(gameObject);
-        transform.position = target.position + (Vector3)offset;
+        if (target == null) Destroy(gameObject);
+        transform.position = target.transform.position + (Vector3)offset;
     }
 }
