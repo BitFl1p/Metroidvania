@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using VladsUsefulScripts;
 [RequireComponent(typeof(Seeker)), RequireComponent(typeof(Rigidbody2D))]
-public class EnemyPathfinding : MonoBehaviour
+public class FlyingEnemy : Enemy
 {
     public Transform target;
 
     public float speed;
+    public float maxSpeedMult;
     public float nextWaypointDistance = 3f;
     Path path;
 
@@ -15,9 +17,8 @@ public class EnemyPathfinding : MonoBehaviour
     bool reachedEndOfPath;
 
     Seeker seeker;
-    Rigidbody2D rb;
 
-    void Start()
+    internal override void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
@@ -35,9 +36,9 @@ public class EnemyPathfinding : MonoBehaviour
     {
         if (seeker.IsDone()) seeker.StartPath(rb.position, target.position, OnPathComplete);
     }
-    void FixedUpdate()
+    internal override void FixedUpdate()
     {
-        
+        //base.FixedUpdate();
         if (path == null) return;
         if(currentWaypoint >= path.vectorPath.Count)
         {
@@ -47,7 +48,7 @@ public class EnemyPathfinding : MonoBehaviour
         else reachedEndOfPath = false;
         Vector2 force = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized * speed;
 
-        rb.AddForce(force);
+        rb.velocity = Clampers.ClampedDrag(rb.velocity + force, drag, -speed * maxSpeedMult, speed * maxSpeedMult);
 
         if (Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance) currentWaypoint++;
         

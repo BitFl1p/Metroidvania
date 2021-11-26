@@ -10,16 +10,17 @@ public class PlayerMovement : MonoBehaviour
     public float speed, maxSpeedMult, jumpPow, drag, lastMove = 1;
     float count;
     public bool isGrounded, registerMove, airDashed, dashing;
-    bool _onWall;
-    public bool onWall
+    bool onWall;
+    public bool OnWall
     {
-        get { return _onWall; }
+        get { return onWall; }
         set
         {
-            if (_onWall == value) return;
-            _onWall = value;
-            if(_onWall == false)
+            if (onWall == value) return;
+            onWall = value;
+            if(onWall == false)
             {
+                registerMove = true;
                 transform.position = new Vector2(transform.position.x + lastMove / 2, transform.position.y);
             }
         }

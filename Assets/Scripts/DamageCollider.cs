@@ -17,7 +17,6 @@ public class DamageCollider : MonoBehaviour
         if (health)
         {
             health.Damage(damage, GetComponent<Collider2D>(), knockback);
-            if (collision.TryGetComponent(out PlayerMovement player)) player.registerMove = false;
         }
     }
     

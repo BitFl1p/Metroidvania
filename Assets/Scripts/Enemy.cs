@@ -5,13 +5,14 @@ using VladsUsefulScripts;
 
 public class Enemy : MonoBehaviour
 {
-    Rigidbody2D rb;
+    internal Rigidbody2D rb;
+    [SerializeField]
     public float drag;
-    private void Start()
+    virtual internal void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    private void FixedUpdate()
+    virtual internal void FixedUpdate()
     {
         rb.velocity = Clampers.Drag(rb.velocity, drag);
     }

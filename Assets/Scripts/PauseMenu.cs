@@ -4,7 +4,21 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    bool paused = false;
+    public static PauseMenu instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
+    public bool paused = false;
     public GameObject menu;
     void Update()
     {

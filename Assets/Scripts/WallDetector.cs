@@ -19,10 +19,10 @@ public class WallDetector : MonoBehaviour
             if (GetComponentInParent<PlayerMovement>().isGrounded)
             {
                 GetComponentInParent<PlayerMovement>().registerMove = true;
-                GetComponentInParent<PlayerMovement>().onWall = false;
+                GetComponentInParent<PlayerMovement>().OnWall = false;
                 return;
             }
-            if (!GetComponentInParent<PlayerMovement>().onWall && !GetComponentInParent<PlayerMovement>().isGrounded)
+            if (!GetComponentInParent<PlayerMovement>().OnWall && !GetComponentInParent<PlayerMovement>().isGrounded)
             {
                 if (Input.GetKey(KeyCode.Space))
                 {
@@ -36,7 +36,7 @@ public class WallDetector : MonoBehaviour
                 }
                 else delayTimer = delay;
                 transform.parent.position += GetComponentInParent<PlayerMovement>().lastMove < 0 ? (Vector3)Vector2.left * 0.4f : (Vector3)Vector2.right * 0.4f;
-                GetComponentInParent<PlayerMovement>().onWall = true;
+                GetComponentInParent<PlayerMovement>().OnWall = true;
                 GetComponentInParent<PlayerMovement>().airDashed = false;
                 GetComponentInParent<PlayerMovement>().registerMove = false;
                 GetComponentInParent<PlayerMovement>().lastMove = transform.parent.eulerAngles.y > 0 ? side : -side;
@@ -49,7 +49,7 @@ public class WallDetector : MonoBehaviour
         if (collision.gameObject.tag == "Ground" && Input.GetAxisRaw("Horizontal") != -GetComponentInParent<PlayerMovement>().lastMove && !Input.GetKey(KeyCode.Space))
         {
             GetComponentInParent<PlayerMovement>().registerMove = true;
-            GetComponentInParent<PlayerMovement>().onWall = false;
+            GetComponentInParent<PlayerMovement>().OnWall  = false;
         }
     }
 }
