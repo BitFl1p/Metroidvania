@@ -16,19 +16,25 @@ public class DialogueTrigger : MonoBehaviour
     }
     private void Update()
     {
+        
         if (playerHere && Input.GetKeyDown(KeyCode.C) && !DialogueManager.instance.anim.GetBool("Dialoguing")) TriggerDialogue();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player") 
         {
+            PlayerMovement.instance.attacks.canAttack = false;
             CButton.instance.sprite.enabled = true;
             playerHere = true; 
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        CButton.instance.sprite.enabled = false;
-        if (collision.tag == "Player") playerHere = false;
+        if (collision.tag == "Player") 
+        {
+            CButton.instance.sprite.enabled = false;
+            playerHere = false;
+            PlayerMovement.instance.attacks.canAttack = true;
+        }
     }
 }

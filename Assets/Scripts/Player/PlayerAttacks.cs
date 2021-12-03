@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerAttacks : MonoBehaviour
 {
+    public bool canAttack = true;
     public bool input;
     PlayerMovement player;
     Animator anim;
@@ -47,7 +48,7 @@ public class PlayerAttacks : MonoBehaviour
             combo = false;
             attack = 0;
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && canAttack)
         {
             if(attack == 0) attack = 1;
             if(combo) attack = 2;
