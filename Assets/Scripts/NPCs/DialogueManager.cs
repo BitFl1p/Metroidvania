@@ -26,7 +26,6 @@ public class DialogueManager : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(this);
         }
     }
     #endregion

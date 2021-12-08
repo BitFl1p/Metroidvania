@@ -15,7 +15,6 @@ public class PauseMenu : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(this);
         }
     }
     public bool paused = false;

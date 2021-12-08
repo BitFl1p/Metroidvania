@@ -50,7 +50,8 @@ public class WallDetector : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ground" && Input.GetAxisRaw("Horizontal") != -GetComponentInParent<PlayerMovement>().lastMove && !Input.GetKey(KeyCode.Space))
+        
+            if (collision.gameObject.tag == "Ground" && side == -1 && !Input.GetKey(KeyCode.Space))
         {
             GetComponentInParent<PlayerMovement>().registerMove = true;
             GetComponentInParent<PlayerMovement>().OnWall  = false;

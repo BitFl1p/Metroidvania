@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -32,7 +33,7 @@ public class PlayerHealth : Health
         vol.profile.TryGet(out Vignette vig);
         vol.profile.TryGet(out ChromaticAberration ab);
         vol.profile.TryGet(out FilmGrain grain);
-        base.Update();
+        if (health <= 0) SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
         vig.intensity.value = Mathf.Clamp(count * 5, 0, 1);
         ab.intensity.value = Mathf.Clamp(count * 5, 0, 1);
         grain.intensity.value = Mathf.Clamp(count * 5, 0, 1);

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] protected int maxHealth, health;
+    public GameObject me;
     protected Rigidbody2D rb;
     // Start is called before the first frame update
     protected virtual void Start()
@@ -14,7 +15,7 @@ public class Health : MonoBehaviour
     }
     protected virtual void Update()
     {
-        if (health <= 0) Destroy(gameObject);
+        if (health <= 0) Destroy(me ? me : gameObject);
     }
 
     public virtual void Damage(int damage, Collider2D dealer, float knockback)

@@ -17,7 +17,6 @@ public class CButton : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(this);
         }
     }
     #endregion

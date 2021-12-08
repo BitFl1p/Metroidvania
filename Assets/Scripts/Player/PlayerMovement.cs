@@ -43,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(this);
         }
     }
     #endregion
