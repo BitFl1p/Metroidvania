@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using VladsUsefulScripts;
 [ExecuteInEditMode]
 public class EnemyPatroller : Enemy
 {

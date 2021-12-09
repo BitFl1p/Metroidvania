@@ -18,7 +18,7 @@ public class PlayerDamageCollider : DamageCollider
         
         if (collision.gameObject.TryGetComponent(out Health health))
         {
-            health.Damage(damage, Input.GetAxisRaw("Vertical") == 0 ? GetComponent<Collider2D>() : collision, knockback);
+            health.Damage(damage, Input.GetAxisRaw("Vertical") == 0 ? PlayerMovement.instance.GetComponent<Collider2D>() : collision, knockback);
             if (me.TryGetComponent(out PlayerMovement player))
             {
                 player.airDashed = false;

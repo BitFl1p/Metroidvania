@@ -28,6 +28,7 @@ public class PlayerHealth : Health
     }
     protected override void Update()
     {
+        if (health > maxHealth) health = maxHealth;
         healthSlider.health = health;
         healthSlider.maxHealth = maxHealth;
         vol.profile.TryGet(out Vignette vig);
