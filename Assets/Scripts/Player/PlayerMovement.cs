@@ -44,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
         {
             instance = this;
         }
-        DontDestroyOnLoad(instance);
     }
     #endregion
     private void Start()

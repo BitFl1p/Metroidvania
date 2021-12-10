@@ -35,6 +35,7 @@ public class AbilityGiver : MonoBehaviour
                 PlayerMovement.instance.StartCoroutine(Popup.instance.Pop("Press X to fire a projectile shot. This drains your mana", 4));
                 PlayerMovement.instance.attacks.maxMana = 4;
                 PlayerMovement.instance.attacks.mana = 4;
+                PlayerMovement.instance.attacks.baseDamage++;
                 break;
         }
         spike.respawnLocation = spikeReset.position;
