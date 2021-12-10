@@ -4,6 +4,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class Spike : MonoBehaviour
 {
+    float count = 0.5f;
     public Vector2 respawnLocation;
     private void OnDrawGizmos()
     {
