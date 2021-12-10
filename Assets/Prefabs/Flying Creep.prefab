@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 4
   health: 0
+  me: {fileID: 0}
 --- !u!114 &6562104507254365400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drag: 0.3
+  healthDrop: {fileID: 611816347235271815, guid: bacd0ad1f2f626141a3f4986e2dd5751, type: 3}
+  manaDrop: {fileID: 4958406784235689192, guid: 66d41c24a372151458e964570116e356, type: 3}
   speed: 7
   maxSpeedMult: 1
   nextWaypointDistance: 3
