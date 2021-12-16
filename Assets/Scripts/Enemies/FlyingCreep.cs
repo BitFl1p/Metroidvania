@@ -6,6 +6,7 @@ using VladsUsefulScripts;
 public class FlyingCreep : FlyingEnemy
 {
     Animator anim;
+    public AudioSource scream;
     internal override void Start()
     {
         base.Start();
@@ -16,6 +17,15 @@ public class FlyingCreep : FlyingEnemy
         base.FixedUpdate();
         anim.SetBool("PlayerSpotted", playerSeen);
 
+    }
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if(!scream.isPlaying) scream.Play();
+            playerSeen = true;
+            target = collision.transform;
+        }
     }
     internal override void FollowPlayer()
     {

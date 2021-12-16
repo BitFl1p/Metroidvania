@@ -36,7 +36,7 @@ public class FlyingEnemy : Enemy
     {
         if (seeker.IsDone() && target) seeker.StartPath(rb.position, target.position, OnPathComplete);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player") 
         { 

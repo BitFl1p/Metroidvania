@@ -19,6 +19,7 @@ public class PlayerDamageCollider : DamageCollider
         if (collision.gameObject.TryGetComponent(out Health health))
         {
             health.Damage(damage, Input.GetAxisRaw("Vertical") == 0 ? PlayerMovement.instance.GetComponent<Collider2D>() : collision, knockback);
+            Camera.main.GetComponent<SoundManager>().PlaySound(1);
             if (me.TryGetComponent(out PlayerMovement player))
             {
                 player.airDashed = false;

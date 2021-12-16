@@ -1,15 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class AnimationEvents : MonoBehaviour
 {
     Animator anim;
     public Projectile playerProjectile;
+    public CinemachineVirtualCamera shaker;
     public void ResetVel()
     {
         GetComponentInParent<PlayerMovement>().registerMove = false;
         GetComponentInParent<Rigidbody2D>().velocity = new Vector2(-GetComponentInParent<PlayerMovement>().lastMove, 0);
+    }
+    public void ShakeCam()
+    {
+        StartCoroutine(Shake(2,5));
+    }
+    public IEnumerator Shake(float time, float magnitude)
+    {
+        var perlin = shaker.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        while (time > 0)
+        {
+            time -= Time.unscaledDeltaTime;
+            perlin.m_AmplitudeGain = magnitude;
+            //transform.position = pos + new Vector2(Random.Range(-magnitude, magnitude), Random.Range(-magnitude, magnitude));
+            yield return null;
+        }
+        perlin.m_AmplitudeGain = 0;
+    }
+    public void CanAttackNow()
+    {
+        GetComponent<Boss>().canAttack = true;
+    }
+    public void PlayWhoosh()
+    {
+        Camera.main.GetComponent<SoundManager>().PlaySound(2);
+    }
+    public void PlayEyeOpen()
+    {
+        Camera.main.GetComponent<SoundManager>().PlaySound(6);
+    }
+    public void PlayGrowl()
+    {
+        Camera.main.GetComponent<SoundManager>().PlaySound(4);
+    }
+    public void PlayRoar()
+    {
+        Camera.main.GetComponent<SoundManager>().PlaySound(5);
     }
     public void RegisterMove()
     {

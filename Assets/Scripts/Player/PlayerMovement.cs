@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (count <= 0)
             {
+                Camera.main.GetComponent<SoundManager>().PlaySound(3);
                 if (!isGrounded) airDashed = true;
                 dashed = true;
                 dashing = true;

@@ -11,6 +11,7 @@ public class DamageCollider : MonoBehaviour
         collision.gameObject.TryGetComponent(out Health health);
         if (health)
         {
+            Camera.main.GetComponent<SoundManager>().PlaySound(0);
             health.Damage(damage, GetComponent<Collider2D>(), knockback);
         }
     }

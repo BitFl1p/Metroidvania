@@ -57,6 +57,7 @@ public class PlayerAttacks : MonoBehaviour
         {
             if (mana > 0)
             {
+                Camera.main.GetComponent<SoundManager>().PlaySound(2);
                 mana--;
                 attack = 3;
             }

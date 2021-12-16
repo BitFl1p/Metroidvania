@@ -11,14 +11,20 @@ public class Boss : MonoBehaviour
     bool start;
     public Projectile shootie;
     Animator anim;
+    public bool canAttack = false;
     private void Start()
     {
         anim = GetComponent<Animator>();
         shootCount = shootTimer;
         shooting = actualShooting;
     }
+    private void Awake()
+    {
+        Camera.main.GetComponent<SoundManager>().SwitchMusic(1);
+    }
     private void Update()
     {
+        if (!canAttack) return;
         anim.SetBool("Shooting", shooting > 0 ? true : false);
         if (shooting > 0)
         {
